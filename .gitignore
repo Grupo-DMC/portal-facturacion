@@ -1,0 +1,162 @@
+# ─────────────────────────────────────────────────────────────
+#  DMC Facturación · .gitignore
+#  Regla de oro: en Git va el CÓDIGO; no van secretos, datos reales,
+#  dependencias, artefactos de compilación ni archivos de tu máquina.
+# ─────────────────────────────────────────────────────────────
+
+# ── Dependencias ──────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+# Un solo gestor de paquetes: el proyecto usa npm (package-lock.json SÍ se versiona)
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+bun.lockb
+
+# ── Next.js / compilación ─────────────────────────────────────
+/.next/
+/out/
+/build/
+/dist/
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+.turbo
+.swc/
+
+# ── Secretos y configuración local (NUNCA subir) ──────────────
+# SESSION_SECRET, credenciales de SQL Server, claves de correo, etc.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+secrets/
+credentials*.json
+service-account*.json
+.npmrc
+.netrc
+
+# ── Datos reales y archivos de negocio ────────────────────────
+# Este repo usa datos FICTICIOS (src/server/seed.ts). Cualquier dato real
+# de clientes, facturas, RUT, pagos o respaldos de BD debe quedar fuera.
+*.bak
+*.mdf
+*.ldf
+*.ndf
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+/data/
+/db-backups/
+/uploads/
+/storage/
+/private/
+# Exportaciones generadas por la app o descargadas a mano
+/exports/
+/reportes-generados/
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.pdf
+*.xml
+# …pero sí los archivos que forman parte del código
+!/public/**/*.pdf
+!/public/**/*.xml
+
+# ── Registros y reportes de ejecución ─────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+lerna-debug.log*
+
+# ── Pruebas y cobertura ───────────────────────────────────────
+/coverage/
+.nyc_output/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.eslintcache
+.stylelintcache
+
+# ── Caché y temporales ────────────────────────────────────────
+.cache/
+.tmp/
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.parcel-cache/
+
+# ── Sistema operativo ─────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ── Editores e IDE ────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+*.sublime-workspace
+*.sublime-project
+.history/
+
+# ── Asistentes de IA y herramientas de diseño (estado local) ──
+# Ajustes, permisos y memoria locales de cada persona; no son parte del producto.
+.claude/
+.claude-flow/
+.cursor/
+.cursorrules
+.aider*
+.continue/
+.windsurf/
+.github/copilot-instructions.local.md
+.impeccable/
+.impeccable-live/
+.superpowers/
+# Archivos de trabajo temporales de scripts auxiliares
+scratch/
+scratchpad/
+
+# ── Empaquetados y comprimidos ────────────────────────────────
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
